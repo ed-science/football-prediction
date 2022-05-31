@@ -24,7 +24,7 @@ def get_goal_timings_dict(home: list, away: list) -> dict:
     away = [re.search(r"(^1?\d{1,2})", minute).group() for minute in away]
     away = {int(minute): "away" for minute in away}
 
-    home.update(away)
+    home |= away
     return {int(minute): home[minute] for minute in sorted(home.keys())}
 
 
